@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+<PropertyGroup>
+     <!-- 
+     Turns off reference assembly generation 
+     See: https://docs.microsoft.com/en-us/dotnet/standard/assembly/reference-assemblies
+     -->
+     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+</PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>FF MSX GFX</AssemblyName>
+    <RootNamespace>FF MSX GFX</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Libraries\Libraries.csproj" />
+  </ItemGroup>
+
+</Project>
