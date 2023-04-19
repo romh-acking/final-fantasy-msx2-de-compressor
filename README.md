@@ -19,11 +19,10 @@ See below for terminal usage information.
 
 ### Dumping
 ```bash
-"FF MSX GFX.exe" "Dump" "%AddressOffset%" "%LengthFactor%" "%InputPathBaseGfxCompressed%" "%OutputPathBaseGfxUncompressed%"
+"FF MSX GFX.exe" "Dump" "%AddressOffset%" "%InputPathBaseGfxCompressed%" "%OutputPathBaseGfxUncompressed%"
 ```
 
 * `AddressOffset`: Specify where in the binary file the .PIC file starts. If you're working off an extracted image set this to `"0x00"`
-* `LengthFactor`: How many pixels in length is the decompression buffer. Not fully reverse engineered.
 * `InputPathBaseGfxCompressed`: Path of the compressed image / binary file
 * `OutputPathBaseGfxUncompressed`: Where to write the uncompressed data. The file must already exist as this is where the header data is retrieved from.
 
@@ -34,3 +33,6 @@ See below for terminal usage information.
 ```
 * `OutputPathGfxCompressed`: The file path where compressed date will be output to
 * `InputPathBaseGfxCompressed`: This in the path of the original .PIC file. It is needed for the header information.
+
+## Special thanks
+* TWE#3544

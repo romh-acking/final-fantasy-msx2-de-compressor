@@ -19,7 +19,6 @@ namespace FF_MSX_GFX
         {
             action,
             address,
-            rowAmount,
             compressedFilePath,
             dumpPath,
         }
@@ -59,10 +58,9 @@ namespace FF_MSX_GFX
                     }
 
                     var address = MyMath.HexToDec(args[(int)DumpArgs.address]);
-                    var size = MyMath.HexToDec(args[(int)DumpArgs.rowAmount]);
                     var compressedFilePath = args[(int)DumpArgs.compressedFilePath];
                     var dumpPath = args[(int)DumpArgs.dumpPath];
-                    DumpAllGeneral(address, size, compressedFilePath, dumpPath);
+                    DumpAllGeneral(address, compressedFilePath, dumpPath);
 
                     break;
                 default:
@@ -91,7 +89,7 @@ namespace FF_MSX_GFX
             File.WriteAllBytes(outputPath, compBytes);
         }
 
-        private static void DumpAllGeneral(int gfxLocation, int rowAmount, string compressedFilePath, string outputPath)
+        private static void DumpAllGeneral(int gfxLocation, string compressedFilePath, string outputPath)
         {
             if (!File.Exists(compressedFilePath))
             {
@@ -99,7 +97,7 @@ namespace FF_MSX_GFX
             }
 
             byte[] compBytes = File.ReadAllBytes(compressedFilePath);
-            File.WriteAllBytes(outputPath, FFMSXFont.Decompress(compBytes, (uint)gfxLocation, (uint)rowAmount));
+            File.WriteAllBytes(outputPath, FFMSXFont.Decompress(compBytes, (uint)gfxLocation));
         }
     }
 }

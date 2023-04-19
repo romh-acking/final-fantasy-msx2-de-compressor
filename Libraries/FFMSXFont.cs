@@ -12,7 +12,7 @@ namespace Libraries.Compression
         private const byte offsetRowSize = 0x6;
         private const byte offsetColSize = 0x8;
 
-        public static byte[] Decompress(byte[] compressedData, uint start, uint rowCount)
+        public static byte[] Decompress(byte[] compressedData, uint start)
         {
             /*
              * XX XX Amount = Fill
@@ -40,8 +40,9 @@ namespace Libraries.Compression
             List<byte> output = new();
 
             byte rowSize = compressedData[start + offsetRowSize];
+            byte rowCount = compressedData[start + offsetColSize];
 
-            var decompressedSize = rowCount * maxRowSize;
+            var decompressedSize = (rowCount + 0x1) * maxRowSize;
             var decompSize = 0;
             byte d = rowSize;
             byte a, b;
